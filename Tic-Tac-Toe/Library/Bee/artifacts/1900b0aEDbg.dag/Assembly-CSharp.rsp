@@ -361,10 +361,11 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll"
-"Assets/_Scripts/BaseGame_Logic.cs"
-"Assets/_Scripts/BaseGame_TTTButton.cs"
-"Assets/_Scripts/MainMenu_Buttons.cs"
-"Assets/_Scripts/Stats.cs"
+"Assets/_Scripts/BaseGame/BaseGame_Logic.cs"
+"Assets/_Scripts/BaseGame/BaseGame_TTTButton.cs"
+"Assets/_Scripts/MainMenu/ExitPopup.cs"
+"Assets/_Scripts/MainMenu/PlayPopup.cs"
+"Assets/_Scripts/MainMenu/Stats.cs"
 -langversion:9.0
 
 /deterministic
