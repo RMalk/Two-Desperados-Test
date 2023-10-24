@@ -27,6 +27,10 @@ public class BaseGame_Logic : MonoBehaviour
     float timer = 0;
     bool gamePaused = false;
 
+    int clicks = 0;
+
+    public EndgamePopup endgamePopup;
+
     void Start()
     {
         timer = 0;
@@ -149,6 +153,11 @@ public class BaseGame_Logic : MonoBehaviour
             if (strikeout[i])
                 return true;
 
+        //Check Draw
+        clicks++;
+        if (clicks == gridSize * gridSize)
+            return true;
+
         return false;
     }
 
@@ -166,13 +175,24 @@ public class BaseGame_Logic : MonoBehaviour
             strikeoutLines.GetChild(1).localPosition = new Vector3(0, (y - 1) * -300, 0);
 
         //Debug.Log("Player " + (Convert.ToInt32(player) + 1) + " Wins!");
-        StartCoroutine(ResetGame());
+        StartCoroutine(WinAnimation());
     }
 
-    IEnumerator ResetGame ()
+    IEnumerator WinAnimation()
     {
         yield return new WaitForSeconds(1);
+        endgamePopup.gameObject.SetActive(true);
 
+        int state = Convert.ToInt32(player);
+        if (clicks == gridSize * gridSize)
+        {
+            state = 2;
+        }
+        endgamePopup.WinState(state);
+    }
+
+    public void ResetGame ()
+    {
         for (int x = 0; x < gridSize; x++)
         {
             for (int y = 0; y < gridSize; y++)
@@ -193,6 +213,8 @@ public class BaseGame_Logic : MonoBehaviour
             }
         }
 
+        //player = !player;
+        clicks = 0;
         timer = 0;
         gamePaused = false;
     }

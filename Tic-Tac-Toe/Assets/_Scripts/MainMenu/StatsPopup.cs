@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Stats : MonoBehaviour
+public class StatsPopup : MonoBehaviour
 {
     public TMP_Text gamesPlayedText;
     public int gamesPlayed = 0;
