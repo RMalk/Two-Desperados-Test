@@ -363,6 +363,8 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll"
 "Assets/_Scripts/BaseGame_Logic.cs"
 "Assets/_Scripts/BaseGame_TTTButton.cs"
+"Assets/_Scripts/MainMenu_Buttons.cs"
+"Assets/_Scripts/Stats.cs"
 -langversion:9.0
 
 /deterministic
