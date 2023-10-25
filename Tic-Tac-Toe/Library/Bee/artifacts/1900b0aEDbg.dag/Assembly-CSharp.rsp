@@ -393,7 +393,10 @@
 "Assets/_Scripts/MainMenu/PlayPopup.cs"
 "Assets/_Scripts/MainMenu/SettingsPopup.cs"
 "Assets/_Scripts/MainMenu/StatsPopup.cs"
-"Assets/_Scripts/Utilities.cs"
+"Assets/_Scripts/_Common/AudioBase.cs"
+"Assets/_Scripts/_Common/AudioManager.cs"
+"Assets/_Scripts/_Common/Sound.cs"
+"Assets/_Scripts/_Common/Utilities.cs"
 -langversion:9.0
 
 /deterministic
