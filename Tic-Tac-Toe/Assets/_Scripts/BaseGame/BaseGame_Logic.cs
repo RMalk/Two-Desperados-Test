@@ -36,6 +36,7 @@ public class BaseGame_Logic : MonoBehaviour
 
     void Start()
     {
+        gameStatistics.InitialiseGameStatistics();
         timer = 0;
     }
 

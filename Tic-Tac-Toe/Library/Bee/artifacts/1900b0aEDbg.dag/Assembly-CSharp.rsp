@@ -385,14 +385,14 @@
 "Assets/_Scripts/BaseGame/BaseGame_Logic.cs"
 "Assets/_Scripts/BaseGame/BaseGame_TTTButton.cs"
 "Assets/_Scripts/BaseGame/EndgamePopup.cs"
-"Assets/_Scripts/GameStatistics.cs"
-"Assets/_Scripts/GameStatisticsData.cs"
+"Assets/_Scripts/DataManagment/GameStatistics.cs"
+"Assets/_Scripts/DataManagment/GameStatisticsData.cs"
+"Assets/_Scripts/DataManagment/SaveSystem.cs"
 "Assets/_Scripts/MainMenu/ExitPopup.cs"
 "Assets/_Scripts/MainMenu/MainMenu.cs"
 "Assets/_Scripts/MainMenu/PlayPopup.cs"
 "Assets/_Scripts/MainMenu/SettingsPopup.cs"
 "Assets/_Scripts/MainMenu/StatsPopup.cs"
-"Assets/_Scripts/SaveSystem.cs"
 "Assets/_Scripts/Utilities.cs"
 -langversion:9.0
 

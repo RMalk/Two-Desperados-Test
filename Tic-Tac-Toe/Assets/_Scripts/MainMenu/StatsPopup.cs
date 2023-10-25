@@ -13,11 +13,9 @@ public class StatsPopup : MonoBehaviour
 
     public TMP_Text averageGameTimeText;
 
-    public GameStatistics stats;
-
     public void OnEnable()
     {
-        stats.InitialiseGameStatistics();
+        GameStatisticsData stats = SaveSystem.LoadGameStatistics();
 
         gamesPlayedText.text = stats.gamesPlayed.ToString();
 
@@ -25,6 +23,6 @@ public class StatsPopup : MonoBehaviour
         player2VictoriesText.text = stats.victories[1].ToString();
         gameDrawsText.text = stats.victories[2].ToString();
 
-        averageGameTimeText.text = stats.averageGameTime.ToString();
+        averageGameTimeText.text = Utilities.FactorTime(stats.averageGameTime) + "s";
     }
 }
