@@ -6,18 +6,25 @@ using TMPro;
 public class StatsPopup : MonoBehaviour
 {
     public TMP_Text gamesPlayedText;
-    public int gamesPlayed = 0;
 
     public TMP_Text player1VictoriesText;
-    public int player1Victories = 0;
-
     public TMP_Text player2VictoriesText;
-    public int player2Victories = 0;
-
     public TMP_Text gameDrawsText;
-    public int gameDraws = 0;
 
     public TMP_Text averageGameTimeText;
-    public float averageGameTime = 0;
 
+    public GameStatistics stats;
+
+    public void OnEnable()
+    {
+        stats.InitialiseGameStatistics();
+
+        gamesPlayedText.text = stats.gamesPlayed.ToString();
+
+        player1VictoriesText.text = stats.victories[0].ToString();
+        player2VictoriesText.text = stats.victories[1].ToString();
+        gameDrawsText.text = stats.victories[2].ToString();
+
+        averageGameTimeText.text = stats.averageGameTime.ToString();
+    }
 }

@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BaseGame_TTTButton : MonoBehaviour
 {
     public int x, y;
+
+    public Sprite[] Xstyles;
+    public Sprite[] Ostyles;
+
+    int currentStyle = 0;
 
     void Awake ()
     {
@@ -41,5 +47,15 @@ public class BaseGame_TTTButton : MonoBehaviour
             }
         }
 
+        //Set symbol style
+        int tempStyle = PlayerPrefs.GetInt("Symbol Style");
+
+        if (tempStyle != currentStyle)
+        {
+            currentStyle = tempStyle;
+
+            transform.GetChild(0).GetComponent<Image>().sprite = Xstyles[currentStyle];
+            transform.GetChild(1).GetComponent<Image>().sprite = Ostyles[currentStyle];
+        }
     }
 }

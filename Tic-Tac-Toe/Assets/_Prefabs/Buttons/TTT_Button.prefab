@@ -290,3 +290,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 0
+  Xstyles:
+  - {fileID: 21300000, guid: d26fa8cf516729b46bfb5b2c02db2e98, type: 3}
+  - {fileID: 21300000, guid: 12e6d8ac3a9fc0e4dabd146fce1cbbef, type: 3}
+  - {fileID: 21300000, guid: bb1359073b9c60c478f128bccc281b9b, type: 3}
+  Ostyles:
+  - {fileID: 21300000, guid: 4fcb13706fb42344da26802a18a750fb, type: 3}
+  - {fileID: 21300000, guid: da526a53e0d871d4ba43fa93c8e46b1f, type: 3}
+  - {fileID: 21300000, guid: 13461fb706dffdd498365e49116a6429, type: 3}

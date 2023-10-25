@@ -7,8 +7,6 @@ public class EndgamePopup : MonoBehaviour
 {
     public Transform winInfo;
 
-
-
     public void WinState(int state)
     {
         for (int i = 0; i < 3; i++)

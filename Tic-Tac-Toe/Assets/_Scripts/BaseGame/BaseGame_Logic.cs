@@ -12,8 +12,10 @@ public class BaseGame_Logic : MonoBehaviour
     public TMP_Text playerNumberText;
     public TMP_Text timerText;
 
+    //Player 1 is false, Player 2 is true
     bool player = false;
 
+    //Abstract representations of the game grid. TODO create an inspector visualasier for the arrays
     public bool[,] clicked = new bool[3,3];
     public bool[,] state = new bool[3,3];
 
@@ -30,6 +32,7 @@ public class BaseGame_Logic : MonoBehaviour
     int clicks = 0;
 
     public EndgamePopup endgamePopup;
+    public GameStatistics gameStatistics;
 
     void Start()
     {
@@ -41,23 +44,9 @@ public class BaseGame_Logic : MonoBehaviour
         if (!gamePaused)
         {
             timer += Time.deltaTime;
-            timerText.text = FactorTime();
+            timerText.text = Utilities.FactorTime(timer);
         }
     }
-
-    string FactorTime()
-    {
-        int seconds = (int)(timer % 60);
-        int minutes = (int)Mathf.Floor(timer / 60);
-
-        return
-        (
-            (minutes < 10 ? "0" + minutes.ToString() : minutes.ToString())
-            + ":" +
-            (seconds < 10 ? "0" + seconds.ToString() : seconds.ToString())
-        );
-    }
-
 
     public void ButtonClick (BaseGame_TTTButton clickedButton)
     {
@@ -80,7 +69,7 @@ public class BaseGame_Logic : MonoBehaviour
                     player = !player;
                     //Player text update
                     playerNumber = Convert.ToInt32(player);
-                    playerNumberText.text = (playerNumber + 1).ToString();
+                    playerNumberText.text = Utilities.PlayerIndex(playerNumber);
 
                     clicked[x, y] = true;
                 }
@@ -180,15 +169,17 @@ public class BaseGame_Logic : MonoBehaviour
 
     IEnumerator WinAnimation()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(clicks == (gridSize * gridSize) ? 0.1f : 1.0f);
         endgamePopup.gameObject.SetActive(true);
 
-        int state = Convert.ToInt32(player);
+        int winState = Convert.ToInt32(player);
         if (clicks == gridSize * gridSize)
         {
-            state = 2;
+            winState = 2;
         }
-        endgamePopup.WinState(state);
+        endgamePopup.WinState(winState);
+
+        gameStatistics.UpdateWins(winState, timer);
     }
 
     public void ResetGame ()
