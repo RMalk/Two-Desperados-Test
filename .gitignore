@@ -2,8 +2,8 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-#/Tic-Tac-Toe/[Ll]ibrary/
-#/Tic-Tac-Toe/[Tt]emp/
+/Tic-Tac-Toe/[Ll]ibrary/
+/Tic-Tac-Toe/[Tt]emp/
 /Tic-Tac-Toe/[Oo]bj/
 /Tic-Tac-Toe/[Bb]uild/
 /Tic-Tac-Toe/[Bb]uilds/
@@ -70,4 +70,3 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /Tic-Tac-Toe/[Aa]ssets/[Ss]treamingAssets/aa.meta
 /Tic-Tac-Toe/[Aa]ssets/[Ss]treamingAssets/aa/*
-/Tic-Tac-Toe/Library/ArtifactDB
