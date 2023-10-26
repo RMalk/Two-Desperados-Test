@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimationScriptController : MonoBehaviour
 {
-    int fps = 60;
+    int fps = 30;
     float timeTick;
 
     public AnimationBlueprint[] animationBlueprint;
@@ -12,7 +12,6 @@ public class AnimationScriptController : MonoBehaviour
     bool[] animationPlaying;
     float[] timer;
     IEnumerator[] animCoroutines;
-    IEnumerator[] delayCoroutines;
 
     bool init = false;
 
@@ -22,30 +21,61 @@ public class AnimationScriptController : MonoBehaviour
     {
         if (!init)
         {
-            animationPlaying = new bool[animationBlueprint.Length];
-            timer = new float[animationBlueprint.Length];
-            animCoroutines = new IEnumerator[animationBlueprint.Length];
-            delayCoroutines = new IEnumerator[animationBlueprint.Length];
+            if(originalTransform == null)
+                originalTransform = new AnimationTransform(transform);
 
-            originalTransform = new AnimationTransform(transform);
+            Init();
 
-            for (int i = 0; i < animationBlueprint.Length; i++)
-            {
-                animCoroutines[i] = AnimTick(i);
-                delayCoroutines[i] = AnimDelay(i);
-            }
-               
             timeTick = 1.0f / fps;
+
             init = true;
         }
     }
 
-    void OnEnable ()
+    void Init()
     {
-        Reset();
+        //Debug.Log(gameObject.name + " INIT");
+        animationPlaying = new bool[animationBlueprint.Length];
+        timer = new float[animationBlueprint.Length];
+        animCoroutines = new IEnumerator[animationBlueprint.Length];
+
+        for (int i = 0; i < animationBlueprint.Length; i++)
+        {
+            animationPlaying[i] = false;
+            timer[i] = 0;
+            animCoroutines[i] = AnimTick(i);
+        }
     }
 
+    void OnEnable()
+    {
+        for (int i = 0; i < animationBlueprint.Length; i++)
+        {
+            if (animationBlueprint[i].playOnEnable)
+                PlayAnimation(i);
+        }
+    }
+
+
     public void PlayAnimation (int index)
+    {
+        PlayAnimationLogic(index);
+    }
+
+    public float PlayAnimation (int index, bool duration)
+    {
+        PlayAnimationLogic(index);
+        if (duration)
+        {
+            return (animationBlueprint[index].duration);
+        }
+        else
+        {
+            return (animationBlueprint[index].duration + animationBlueprint[index].startDelay);
+        }
+    }
+
+    void PlayAnimationLogic (int index)
     {
         if (index < animationBlueprint.Length)
         {
@@ -54,29 +84,30 @@ public class AnimationScriptController : MonoBehaviour
 
             if (animationBlueprint[index].startDelay > 0)
             {
-                StartCoroutine(delayCoroutines[index]);
+                if (animationBlueprint[index].playOnEnable)
+                {
+                    for (int animIndex = 0; animIndex < animationBlueprint[index].animationComponent.Length; animIndex++)
+                    {
+                        Animate(animIndex, index, 0);
+                    }
+                }
             }
-            else
-            {
-                StartCoroutine(animCoroutines[index]);
-            }
+
+            StartCoroutine(animCoroutines[index]);
         }
         else
         {
-            Debug.LogWarning(gameObject.name + " is atempting to play an animation which index is not alocated.");
+            Debug.LogWarning(gameObject.name + " is atempting to play an animation whose index is not alocated.");
         }
-        //Debug.Log("Play Animation " + index);
-    }
-
-    IEnumerator AnimDelay(int index)
-    {
-        yield return new WaitForSeconds(animationBlueprint[index].startDelay);
-        StartCoroutine(animCoroutines[index]);
-        StopCoroutine(delayCoroutines[index]);
     }
 
     IEnumerator AnimTick(int index)
     {
+
+        if (animationBlueprint[index].startDelay > 0)
+            yield return new WaitForSeconds(animationBlueprint[index].startDelay);
+
+
         while (animationPlaying[index])
         {
             float factor = 1 - (timer[index] / animationBlueprint[index].duration);
@@ -89,8 +120,16 @@ public class AnimationScriptController : MonoBehaviour
             }
             if (timer[index] <= 0)
             {
-                animationPlaying[index] = false;
-                StopCoroutine(animCoroutines[index]);
+                if(animationBlueprint[index].loop)
+                {
+                    timer[index] = animationBlueprint[index].duration;
+                }
+                else
+                {
+                    timer[index] = 0;
+                    animationPlaying[index] = false;
+                    StopCoroutine(animCoroutines[index]);
+                }
             }
             yield return new WaitForSeconds(timeTick);
             timer[index] -= timeTick;
@@ -107,10 +146,10 @@ public class AnimationScriptController : MonoBehaviour
         switch (elem)
         {
             case Utilities.AnimElement.Position:
-
+                //TODO
                 break;
             case Utilities.AnimElement.Rotation:
-
+                //TODO
                 break;
             case Utilities.AnimElement.Scale:
 
@@ -130,9 +169,16 @@ public class AnimationScriptController : MonoBehaviour
         }
     }
 
+    void OnDisable()
+    {
+        Reset();
+    }
+
     public void Reset ()
     {
+        //Debug.Log("Reset");
         StopAllCoroutines();
+
         if (originalTransform != null)
         {
             transform.localPosition = originalTransform.position;

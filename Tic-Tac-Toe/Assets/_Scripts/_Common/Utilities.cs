@@ -5,7 +5,15 @@ public static class Utilities
 {
     public enum SoundType { Click, Swipe, Nope };
 
-    public enum AnimElement { Position, Rotation, Scale };
+    public enum AnimElement 
+    {
+        Position = 0,
+        Rotation = 1,
+        Scale = 2, 
+        Fade = 10, 
+        Width = 20, 
+        Height = 21
+    };
 
     public enum AnimAxis { XAxis, YAxis, ZAxis };
 
