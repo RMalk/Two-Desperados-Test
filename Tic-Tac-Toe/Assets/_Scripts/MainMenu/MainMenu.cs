@@ -11,14 +11,12 @@ public class MainMenu : MonoBehaviour
 
     void OnEnable()
     {
-        transform.GetComponent<GameStatistics>().InitialiseGameStatistics();
-
         for (int i = 0; i < popups.childCount; i++)
             popups.GetChild(i).gameObject.SetActive(false);
     }
 
     public void ButtonPress ()
     {
-        audioManager.PlaySounds(AudioBase.SoundType.Click);
+        audioManager.PlaySounds(Utilities.SoundType.Click);
     }
 }

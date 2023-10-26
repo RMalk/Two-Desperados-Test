@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9fdf805d6a5ce45b3017f11f4190fc, type: 3}
+  m_Name: ButtonClick_00
+  m_EditorClassIdentifier: 
+  duration: 0.2
+  startDelay: 0
+  loop: 0
+  playOnEnable: 0
+  animationComponent:
+  - animElement: 2
+    animCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: -1.7794688
+        outSlope: -1.7794688
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.09902329
+      - serializedVersion: 3
+        time: 0.16827616
+        value: 0.7902225
+        inSlope: -0.0073368954
+        outSlope: -0.0073368954
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.4778696
+        outWeight: 0.38816032
+      - serializedVersion: 3
+        time: 0.5158395
+        value: 1.0081744
+        inSlope: 0.22328113
+        outSlope: 0.22328113
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.30189535
+        outWeight: 0.42296162
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0.11430232
+        outSlope: 0.11430232
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.2195678
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    x: 1
+    y: 1
+    z: 0
+  customStartPos: 0
+  startPos: {x: 0, y: 0, z: 0}
+  customEndPos: 0
+  endPos: {x: 0, y: 0, z: 0}

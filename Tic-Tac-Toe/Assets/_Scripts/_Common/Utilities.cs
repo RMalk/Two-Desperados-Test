@@ -3,6 +3,11 @@ using System.IO;
 
 public static class Utilities
 {
+    public enum SoundType { Click, Swipe, Nope };
+
+    public enum AnimElement { Position, Rotation, Scale };
+
+    public enum AnimAxis { XAxis, YAxis, ZAxis };
 
     public static string FactorTime (float unfactoredTime)
     {

@@ -1639,7 +1639,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8808595338707907042}
   - component: {fileID: 17120049148294129}
-  - component: {fileID: 2931179004268213025}
   m_Layer: 5
   m_Name: StatsPopup
   m_TagString: Untagged
@@ -1688,21 +1687,6 @@ MonoBehaviour:
   player2VictoriesText: {fileID: 8808595338018868243}
   gameDrawsText: {fileID: 8808595337537374114}
   averageGameTimeText: {fileID: 8808595337144373358}
---- !u!114 &2931179004268213025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8808595338707907043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e91b17f95afa7d4099a86371ef19996, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gamesPlayed: 0
-  averageGameTime: 0
-  victories: 
 --- !u!1 &8808595338737733089
 GameObject:
   m_ObjectHideFlags: 0

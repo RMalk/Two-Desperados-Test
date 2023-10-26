@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 7104991606880888774}
   - component: {fileID: 7104991606880888825}
   - component: {fileID: 6216260443130185702}
+  - component: {fileID: 6886059515897064991}
   m_Layer: 5
   m_Name: TTT_Button
   m_TagString: Untagged
@@ -275,7 +276,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7104991606880888774}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6216260443130185702}
+        m_TargetAssemblyTypeName: BaseGame_TTTButton, Assembly-CSharp
+        m_MethodName: AnimateButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6216260443130185702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,3 +323,20 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4fcb13706fb42344da26802a18a750fb, type: 3}
   - {fileID: 21300000, guid: da526a53e0d871d4ba43fa93c8e46b1f, type: 3}
   - {fileID: 21300000, guid: 13461fb706dffdd498365e49116a6429, type: 3}
+  anim: {fileID: 6886059515897064991}
+--- !u!114 &6886059515897064991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7104991606880888827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef02cebd592d9d47a0c402a80360695, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationBlueprint:
+  - {fileID: 11400000, guid: 42bae318b994da346aa94411fe37d8d2, type: 2}
+  - {fileID: 11400000, guid: 2d1d61e158708dc4a8f53d3c9bf931a8, type: 2}
+  - {fileID: 11400000, guid: eed44b2c6832e1a439b5d1bd148dd88e, type: 2}

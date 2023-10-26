@@ -15,14 +15,27 @@ public class StatsPopup : MonoBehaviour
 
     public void OnEnable()
     {
-        GameStatisticsData stats = SaveSystem.LoadGameStatistics();
+        if (SaveSystem.CheckPath())
+        {
+            GameStatisticsData stats = SaveSystem.LoadGameStatistics();
 
-        gamesPlayedText.text = stats.gamesPlayed.ToString();
+            gamesPlayedText.text = stats.gamesPlayed.ToString();
 
-        player1VictoriesText.text = stats.victories[0].ToString();
-        player2VictoriesText.text = stats.victories[1].ToString();
-        gameDrawsText.text = stats.victories[2].ToString();
+            player1VictoriesText.text = stats.victories[0].ToString();
+            player2VictoriesText.text = stats.victories[1].ToString();
+            gameDrawsText.text = stats.victories[2].ToString();
 
-        averageGameTimeText.text = Utilities.FactorTime(stats.averageGameTime) + "s";
+            averageGameTimeText.text = Utilities.FactorTime(stats.averageGameTime) + "s";
+        }
+        else
+        {
+            gamesPlayedText.text = "0";
+
+            player1VictoriesText.text = "0";
+            player2VictoriesText.text = "0";
+            gameDrawsText.text = "0";
+
+            averageGameTimeText.text = "none";
+        }
     }
 }

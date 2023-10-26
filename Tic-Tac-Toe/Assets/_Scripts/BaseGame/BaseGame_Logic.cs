@@ -33,6 +33,7 @@ public class BaseGame_Logic : MonoBehaviour
 
     public EndgamePopup endgamePopup;
     public GameStatistics gameStatistics;
+    public AudioManager audioManager;
 
     void Start()
     {
@@ -58,6 +59,7 @@ public class BaseGame_Logic : MonoBehaviour
 
             if (!clicked[x, y])
             {
+                audioManager.PlaySounds(Utilities.SoundType.Click);
                 int playerNumber = Convert.ToInt32(player);
 
                 clickedButton.transform.GetChild(playerNumber).gameObject.SetActive(true);
@@ -78,6 +80,10 @@ public class BaseGame_Logic : MonoBehaviour
                 {
                     GameWin(x, y);
                 }
+            }
+            else
+            {
+                audioManager.PlaySounds(Utilities.SoundType.Nope);
             }
         }
     }

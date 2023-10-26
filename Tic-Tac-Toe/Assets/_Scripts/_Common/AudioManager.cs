@@ -27,10 +27,10 @@ public class AudioManager : MonoBehaviour
 
     void CreateSoundGroups ()
     {
-        int typeCount = Enum.GetNames(typeof(AudioBase.SoundType)).Length;
+        int typeCount = Enum.GetNames(typeof(Utilities.SoundType)).Length;
         int[] soundTypeCount = new int[typeCount];
 
-        string[] names = System.Enum.GetNames(typeof(AudioBase.SoundType));
+        string[] names = System.Enum.GetNames(typeof(Utilities.SoundType));
 
         for (int i = 0; i < sounds.Length; i++)
         {
@@ -48,7 +48,7 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    public void PlaySounds(AudioBase.SoundType soundType)
+    public void PlaySounds(Utilities.SoundType soundType)
     {
         int soundCount = transform.GetChild((int)soundType).childCount;
         int randomSound = 0;
@@ -69,7 +69,6 @@ public class AudioManager : MonoBehaviour
                     sounds[i].source.Play();
                     break;
                 }
-                soundCount++;
             }
         }
     }
