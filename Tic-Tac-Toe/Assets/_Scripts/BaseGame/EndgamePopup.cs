@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EndgamePopup : MonoBehaviour
 {
@@ -20,10 +19,5 @@ public class EndgamePopup : MonoBehaviour
                 winInfo.GetChild(i).gameObject.SetActive(false);
             }
         }
-    }
-
-    public void ExitGame()
-    {
-        SceneManager.LoadScene("MainMenu");
     }
 }

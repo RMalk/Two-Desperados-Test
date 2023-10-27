@@ -5,12 +5,16 @@ using UnityEngine;
 public class BaseGame_GameBoard : MonoBehaviour
 {
     public AnimationScriptController[] strokes;
+    public AudioManager audioManager;
     IEnumerator[] animCoroutines;
 
     public float delay;
 
     void Awake()
     {
+        if (audioManager == null)
+            audioManager = GameObject.Find("/AudioManager").GetComponent<AudioManager>();
+
         animCoroutines = new IEnumerator[strokes.Length];
         for (int i = 0; i < strokes.Length; i++)
         {
@@ -38,6 +42,7 @@ public class BaseGame_GameBoard : MonoBehaviour
     {
         yield return new WaitForSeconds(delay * index);
         strokes[index].gameObject.SetActive(true);
+        audioManager.PlaySounds(Utilities.SoundType.Swipe);
 
         yield return new WaitForSeconds(strokes[index].animationBlueprint[0].duration);
         StopCoroutine(animCoroutines[index]);

@@ -11,6 +11,12 @@ public class MainMenu : MonoBehaviour
 
     public AudioManager audioManager;
 
+    void OnAwake()
+    {
+        if (audioManager == null)
+            audioManager = GameObject.Find("/AudioManager").GetComponent<AudioManager>();
+    }
+
     void OnEnable()
     {
         blocker.SetActive(false);
@@ -25,12 +31,7 @@ public class MainMenu : MonoBehaviour
 
     public void PopupHide (int index)
     {
-        AnimationScriptController anim = popups.GetChild(index).gameObject.GetComponent<AnimationScriptController>();
-        int random = UnityEngine.Random.Range(1, anim.animationBlueprint.Length - 1);
-
-        float delay = anim.PlayAnimation(random, false);
-        
-        StartCoroutine(DisablePopup(delay, index));
+        StartCoroutine(DisablePopup(PopupMethods.PopupHide(popups.GetChild(index)), index));
     }
 
     IEnumerator DisablePopup (float delay, int index)

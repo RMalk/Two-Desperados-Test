@@ -1264,6 +1264,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5953819175952194390, guid: 1f2899ea22d2e934ebb060e27503414a, type: 3}
+      propertyPath: m_Color.a
+      value: 0.7294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 5953819175952194390, guid: 1f2899ea22d2e934ebb060e27503414a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.51666665
+      objectReference: {fileID: 0}
+    - target: {fileID: 5953819175952194390, guid: 1f2899ea22d2e934ebb060e27503414a, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5953819175952194390, guid: 1f2899ea22d2e934ebb060e27503414a, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: b9a4554d6431c20488fa20b39dfea21a, type: 2}
+    - target: {fileID: 8420370729926212527, guid: 1f2899ea22d2e934ebb060e27503414a, type: 3}
+      propertyPath: m_fontColorGradientPreset
+      value: 
+      objectReference: {fileID: 11400000, guid: 19a94e9643baf534e9b512517f9953d5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f2899ea22d2e934ebb060e27503414a, type: 3}
 --- !u!224 &3623970520425530862 stripped
@@ -1291,6 +1311,10 @@ PrefabInstance:
       value: CloseButton
       objectReference: {fileID: 0}
     - target: {fileID: 4158459070360609400, guid: a7c9f6c3206f28f4585b3e3aa3cf3b52, type: 3}
+      propertyPath: m_fontSize
+      value: 84.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4158459070360609400, guid: a7c9f6c3206f28f4585b3e3aa3cf3b52, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: bc36d578a5efb8b4691ca712bb298151, type: 2}
@@ -1305,7 +1329,7 @@ PrefabInstance:
     - target: {fileID: 4158459070360609400, guid: a7c9f6c3206f28f4585b3e3aa3cf3b52, type: 3}
       propertyPath: m_fontColorGradientPreset
       value: 
-      objectReference: {fileID: 11400000, guid: b7f0546018879334488bf8a97f816530, type: 2}
+      objectReference: {fileID: 11400000, guid: 19a94e9643baf534e9b512517f9953d5, type: 2}
     - target: {fileID: 7150798212811078386, guid: a7c9f6c3206f28f4585b3e3aa3cf3b52, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

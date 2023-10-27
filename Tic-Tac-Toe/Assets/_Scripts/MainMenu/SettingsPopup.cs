@@ -11,6 +11,8 @@ public class SettingsPopup : MonoBehaviour
 {
     public AudioMixer mainAudioMixer;
 
+    public AudioManager audioManager;
+
     public Slider masterSlider, soundSlider, musicSlider;
     public Toggle soundToggle, musicToggle;
 
@@ -26,6 +28,8 @@ public class SettingsPopup : MonoBehaviour
             SliderChange(toggle, i);
 
         SetMasterVolume(toggle ? masterSlider.value : masterSlider.minValue);
+        if (toggle)
+            ButtonPress();
     }
 
     void ToggleChange(bool toggle)
@@ -42,6 +46,8 @@ public class SettingsPopup : MonoBehaviour
         soundSlider.enabled = toggle;
         SliderChange(toggle, 1);
         SetSoundVolume(toggle ? soundSlider.value : soundSlider.minValue);
+        if (toggle)
+            ButtonPress();
     }
 
     public void ToggleMusic(bool toggle)
@@ -49,6 +55,12 @@ public class SettingsPopup : MonoBehaviour
         musicSlider.enabled = toggle;
         SliderChange(toggle, 2);
         SetMusicVolume(toggle ? musicSlider.value : musicSlider.minValue);
+        ButtonPress();
+    }
+
+    public void ButtonPress()
+    {
+        audioManager.PlaySounds(Utilities.SoundType.Click);
     }
 
     void SliderChange(bool toggle, int slider)

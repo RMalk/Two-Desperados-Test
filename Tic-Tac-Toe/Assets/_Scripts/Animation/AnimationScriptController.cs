@@ -71,6 +71,7 @@ public class AnimationScriptController : MonoBehaviour
         PlayAnimationLogic(index);
     }
 
+    //Plays the desired animation and returns it's duration
     public float PlayAnimation (int index, bool duration)
     {
         PlayAnimationLogic(index);
@@ -81,6 +82,28 @@ public class AnimationScriptController : MonoBehaviour
         else
         {
             return (animationBlueprint[index].duration + animationBlueprint[index].startDelay);
+        }
+    }
+
+    public void PlayAnimation (int index, Vector3 customPosition)
+    {
+        bool possible = false; ;
+        for (int i = 0; i < animationBlueprint[index].animationComponent.Length; i++)
+        {
+            if (animationBlueprint[index].animationComponent[i].animElement == Utilities.Position)
+            {
+                possible = true;
+                break;
+            }
+        }
+        if (possible)
+        {
+
+            PlayAnimationLogic(index);
+        }
+        else 
+        {
+            Debug.LogWarning("Impossible translation animation atempted.");
         }
     }
 
@@ -161,6 +184,7 @@ public class AnimationScriptController : MonoBehaviour
                 //TODO
                 break;
             case Utilities.AnimElement.Scale:
+
                 transform.localScale = AnimateScale.Animate
                 (
                     animationBlueprint[index].animationComponent[animIndex],
@@ -171,6 +195,7 @@ public class AnimationScriptController : MonoBehaviour
 
                 break;
             case Utilities.AnimElement.Width:
+
                 GetComponent<RectTransform>().sizeDelta = new Vector2 (AnimateWidth.Animate
                 (
                     animationBlueprint[index].animationComponent[animIndex],
