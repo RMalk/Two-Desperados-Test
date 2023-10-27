@@ -31,6 +31,7 @@ public class BaseGame_Logic : MonoBehaviour
 
     int clicks = 0;
 
+    //public BaseGame_GameBoard gameBoard;
     public EndgamePopup endgamePopup;
     public GameStatistics gameStatistics;
     public AudioManager audioManager;

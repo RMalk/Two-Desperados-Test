@@ -22,7 +22,16 @@ public class AnimationScriptController : MonoBehaviour
         if (!init)
         {
             if(originalTransform == null)
-                originalTransform = new AnimationTransform(transform);
+            {
+                if (GetComponent<RectTransform>() == null)
+                {
+                    originalTransform = new AnimationTransform(transform);
+                }
+                else
+                {
+                    originalTransform = new AnimationTransform(GetComponent<RectTransform>());
+                }
+            }
 
             Init();
 
@@ -152,15 +161,22 @@ public class AnimationScriptController : MonoBehaviour
                 //TODO
                 break;
             case Utilities.AnimElement.Scale:
-
-                float eval = animationBlueprint[index].animationComponent[animIndex].animCurve.Evaluate(factor);
-                Vector3 scale = new Vector3
+                transform.localScale = AnimateScale.Animate
                 (
-                    x ? eval * originalTransform.scale.x : transform.localScale.x,
-                    y ? eval * originalTransform.scale.y : transform.localScale.y,
-                    z ? eval * originalTransform.scale.z : transform.localScale.z
+                    animationBlueprint[index].animationComponent[animIndex],
+                    factor,
+                    originalTransform.scale,
+                    transform.localScale
                 );
-                transform.localScale = scale;
+
+                break;
+            case Utilities.AnimElement.Width:
+                GetComponent<RectTransform>().sizeDelta = new Vector2 (AnimateWidth.Animate
+                (
+                    animationBlueprint[index].animationComponent[animIndex],
+                    factor,
+                    originalTransform.width
+                ), GetComponent<RectTransform>().sizeDelta.y);
 
                 break;
             default:

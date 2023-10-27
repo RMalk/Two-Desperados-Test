@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
-[CreateAssetMenu(fileName = "New Anim", menuName = "Animation/Blueprint")]
+[CreateAssetMenu(fileName = "New Anim", menuName = "UI Animation/UI Animation Blueprint")]
 public class AnimationBlueprint : ScriptableObject
 {
     [Range(0.01f, 10f)]

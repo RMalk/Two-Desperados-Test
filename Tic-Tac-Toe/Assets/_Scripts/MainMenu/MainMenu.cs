@@ -37,6 +37,7 @@ public class MainMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         popups.GetChild(index).gameObject.SetActive(false);
+        blocker.SetActive(false);
 
         StopCoroutine(DisablePopup(delay, index));
     }
