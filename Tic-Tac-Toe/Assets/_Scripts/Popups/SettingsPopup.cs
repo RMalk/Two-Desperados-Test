@@ -119,17 +119,17 @@ public class SettingsPopup : MonoBehaviour
 
     public void SetMasterVolume(float volume)
     {
-        mainAudioMixer.SetFloat("masterVolume", Utilities.TweakVolume(volume));
+        mainAudioMixer.SetFloat("masterVolume", Utilities.TweakVolume(volume * (masterToggle.isOn ? 1 : 0)));
     }
 
     public void SetSoundVolume(float volume)
     {
-        mainAudioMixer.SetFloat("soundVolume", Utilities.TweakVolume(volume));
+        mainAudioMixer.SetFloat("soundVolume", Utilities.TweakVolume(volume * (soundToggle.isOn ? 1 : 0)));
     }
 
     public void SetMusicVolume(float volume)
     {
-        mainAudioMixer.SetFloat("musicVolume", Utilities.TweakVolume(volume));
+        mainAudioMixer.SetFloat("musicVolume", Utilities.TweakVolume(volume * (musicToggle.isOn ? 1 : 0)));
     }
 
     void OnDisable()
