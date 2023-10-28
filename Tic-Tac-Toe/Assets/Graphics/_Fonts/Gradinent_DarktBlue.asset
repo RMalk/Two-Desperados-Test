@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54d21f6ece3b46479f0c328f8c6007e0, type: 3}
-  m_Name: Gradinent_LightBlue
+  m_Name: Gradinent_DarktBlue
   m_EditorClassIdentifier: 
   colorMode: 2
   topLeft: {r: 0.052954797, g: 0.47373897, b: 0.6603774, a: 1}

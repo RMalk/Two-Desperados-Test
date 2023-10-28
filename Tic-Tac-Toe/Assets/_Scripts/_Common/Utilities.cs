@@ -49,4 +49,12 @@ public static class Utilities
 
         return playerIndexString;
     }
+
+    public static float TweakVolume(float volume)
+    {
+        //TODO implementing custom volume curve instead of basic square root; dB is logorithmic :/
+        volume = Mathf.Sqrt(volume);
+        volume = (volume * 81) - 80;
+        return volume;
+    }
 }

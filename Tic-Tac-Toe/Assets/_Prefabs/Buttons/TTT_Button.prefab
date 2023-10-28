@@ -315,6 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   y: 0
+  symbolSwitch: {fileID: 11400000, guid: 5a1e8c96ab8d1604ba21cf18c5baa88a, type: 2}
   Xstyles:
   - {fileID: 21300000, guid: d26fa8cf516729b46bfb5b2c02db2e98, type: 3}
   - {fileID: 21300000, guid: 12e6d8ac3a9fc0e4dabd146fce1cbbef, type: 3}

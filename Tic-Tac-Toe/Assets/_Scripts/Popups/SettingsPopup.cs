@@ -4,22 +4,44 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
-
 //Note to self: boolean logic is a bitch without a pieace of papaer or at least some node based scripting. Avoid it in the future if possible
-//TODO remove this comment as to not offend anyone reading this; tis was my atempt at righteous retribution against the code
+//TODO remove this comment as to not offend anyone reading this; tis was my atempt of righteous retribution against the code
 public class SettingsPopup : MonoBehaviour
 {
-    public AudioMixer mainAudioMixer;
+    [SerializeField] private AudioMixer mainAudioMixer;
 
-    public AudioManager audioManager;
+    [SerializeField] private AudioManager audioManager;
 
-    public Slider masterSlider, soundSlider, musicSlider;
-    public Toggle soundToggle, musicToggle;
+    [Header("Master Settings")]
+    [SerializeField] private Toggle masterToggle;
+    [SerializeField] private Slider masterSlider;
 
-    public Color[] toggleColors;
-    public Color[] sliderColors;
 
-    //TODO PlayerPrefs; bummer
+    [Header("Sound Settings")]
+    [SerializeField] private Toggle soundToggle;
+    [SerializeField] private Slider soundSlider;
+
+    [Header("Music Settings")]
+    [SerializeField] private Toggle musicToggle;
+    [SerializeField] private Slider musicSlider;
+
+    [Header("Color Variation")]
+    [SerializeField] private Color[] toggleColors;
+    [SerializeField] private Color[] sliderColors;
+
+    public void OnEnable ()
+    {
+        if (PlayerPrefs.HasKey("Volume Master"))
+        {
+            masterToggle.isOn = PlayerPrefs.GetInt("Volume Master Toggle") > 0 ? true : false;
+            soundToggle.isOn = PlayerPrefs.GetInt("Volume Sound Toggle") > 0 ? true : false;
+            musicToggle.isOn = PlayerPrefs.GetInt("Volume Music Toggle") > 0 ? true : false;
+
+            masterSlider.value = PlayerPrefs.GetFloat("Volume Master");
+            soundSlider.value = PlayerPrefs.GetFloat("Volume Sound");
+            musicSlider.value = PlayerPrefs.GetFloat("Volume Music");
+        }
+    }
 
     public void ToggleMaster(bool toggle)
     {
@@ -95,16 +117,27 @@ public class SettingsPopup : MonoBehaviour
 
     public void SetMasterVolume(float volume)
     {
-        mainAudioMixer.SetFloat("masterVolume", volume);
+        mainAudioMixer.SetFloat("masterVolume", Utilities.TweakVolume(volume));
     }
 
     public void SetSoundVolume(float volume)
     {
-        mainAudioMixer.SetFloat("soundVolume", volume);
+        mainAudioMixer.SetFloat("soundVolume", Utilities.TweakVolume(volume));
     }
 
     public void SetMusicVolume(float volume)
     {
-        mainAudioMixer.SetFloat("soundVolume", volume);
+        mainAudioMixer.SetFloat("musicVolume", Utilities.TweakVolume(volume));
+    }
+
+    void OnDisable()
+    {
+        PlayerPrefs.SetInt("Volume Master Toggle", masterToggle.isOn ? 1 : 0);
+        PlayerPrefs.SetInt("Volume Sound Toggle", soundToggle.isOn ? 1 : 0);
+        PlayerPrefs.SetInt("Volume Music Toggle", musicToggle.isOn ? 1 : 0);
+
+        PlayerPrefs.SetFloat("Volume Master", masterSlider.value);
+        PlayerPrefs.SetFloat("Volume Sound", soundSlider.value);
+        PlayerPrefs.SetFloat("Volume Music", musicSlider.value);
     }
 }

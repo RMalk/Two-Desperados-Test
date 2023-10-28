@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class BaseGame_Buttons : MonoBehaviour
 {
-    public GameObject exitPopup;
-    public GameObject settingsPopup;
-    public GameObject statsPopup;
+    [SerializeField] private GameObject exitPopup;
+    [SerializeField] private GameObject settingsPopup;
+    [SerializeField] private GameObject statsPopup;
 
-    public GameObject blocker;
+    [SerializeField] private GameObject blocker;
 
-    public AudioManager audioManager;
+    [SerializeField] private AudioManager audioManager;
 
     void Awake()
     {

@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BaseGame_GameBoard : MonoBehaviour
 {
-    public AnimationScriptController[] strokes;
-    public AudioManager audioManager;
+    [SerializeField] private AnimationScriptController[] strokes;
+    [SerializeField] private AudioManager audioManager;
     IEnumerator[] animCoroutines;
 
-    public float delay;
+    [SerializeField] private float delay;
+
+    int currentStyle = 0;
+    [SerializeField] private StrokeSwitch strokeSwitch;
 
     void Awake()
     {
@@ -24,6 +28,21 @@ public class BaseGame_GameBoard : MonoBehaviour
 
     void OnEnable()
     {
+        //Set stroke style
+        if (PlayerPrefs.HasKey("Symbol Style"))
+        {
+            int strokeStyle = PlayerPrefs.GetInt("Symbol Style");
+            if (strokeStyle != currentStyle)
+            {
+                for (int i = 0; i < strokes.Length; i++)
+                {
+                    strokes[i].GetComponent<Image>().sprite = strokeSwitch.stroke[strokeStyle].strokeImage;
+                    strokes[i].GetComponent<Image>().color = strokeSwitch.stroke[strokeStyle].color[1];
+                }
+                currentStyle = strokeStyle;
+            }
+        }
+
         DrawGameBoard();
     }
 
@@ -46,6 +65,14 @@ public class BaseGame_GameBoard : MonoBehaviour
 
         yield return new WaitForSeconds(strokes[index].animationBlueprint[0].duration);
         StopCoroutine(animCoroutines[index]);
+    }
+
+    public void EraseGameBoard()
+    {
+        for (int i = 0; i < strokes.Length; i++)
+        {
+            strokes[i].PlayAnimation(1);
+        }
     }
 
     public void Reset()

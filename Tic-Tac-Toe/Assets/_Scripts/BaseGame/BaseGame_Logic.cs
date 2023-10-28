@@ -9,22 +9,22 @@ public class BaseGame_Logic : MonoBehaviour
     //TODO
     int gridSize = 3;
 
-    public TMP_Text playerNumberText;
-    public TMP_Text timerText;
+    [SerializeField] private TMP_Text playerNumberText;
+    [SerializeField] private TMP_Text timerText;
 
     //Player 1 is false, Player 2 is true
     bool player = false;
 
     //Abstract representations of the game grid. TODO create an inspector visualasier for the arrays
-    public bool[,] clicked = new bool[3,3];
-    public bool[,] state = new bool[3,3];
+    [SerializeField] private bool[,] clicked = new bool[3,3];
+    [SerializeField] private bool[,] state = new bool[3,3];
 
     //0 is vertical
     //1 is horizontal
     //2 is diagonal right
     //3 is diagonal left
     bool[] strikeout = new bool[4];
-    public Transform strikeoutLines;
+    [SerializeField] private Transform strikeoutLines;
 
     float timer = 0;
     bool gamePaused = false;
@@ -32,9 +32,9 @@ public class BaseGame_Logic : MonoBehaviour
     int clicks = 0;
 
     //public BaseGame_GameBoard gameBoard;
-    public EndgamePopup endgamePopup;
-    public GameStatistics gameStatistics;
-    public AudioManager audioManager;
+    [SerializeField] private EndgamePopup endgamePopup;
+    [SerializeField] private GameStatistics gameStatistics;
+    [SerializeField] private AudioManager audioManager;
 
     void Start()
     {
@@ -198,8 +198,8 @@ public class BaseGame_Logic : MonoBehaviour
             {
                 state[x, y] = false;
                 clicked[x, y] = false;
-                transform.GetChild(0).GetChild(y).GetChild(x).GetChild(0).gameObject.SetActive(false);
-                transform.GetChild(0).GetChild(y).GetChild(x).GetChild(1).gameObject.SetActive(false);
+                transform.GetChild(1).GetChild(y).GetChild(x).GetChild(0).gameObject.SetActive(false);
+                transform.GetChild(1).GetChild(y).GetChild(x).GetChild(1).gameObject.SetActive(false);
             }
         }
 

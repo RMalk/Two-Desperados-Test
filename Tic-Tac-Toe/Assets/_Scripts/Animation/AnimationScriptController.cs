@@ -90,7 +90,7 @@ public class AnimationScriptController : MonoBehaviour
         bool possible = false; ;
         for (int i = 0; i < animationBlueprint[index].animationComponent.Length; i++)
         {
-            if (animationBlueprint[index].animationComponent[i].animElement == Utilities.Position)
+            if (animationBlueprint[index].animationComponent[i].animElement == Utilities.AnimElement.Position)
             {
                 possible = true;
                 break;
@@ -178,7 +178,15 @@ public class AnimationScriptController : MonoBehaviour
         switch (elem)
         {
             case Utilities.AnimElement.Position:
-                //TODO
+
+                transform.localPosition = AnimatePosition.Animate
+                (
+                    animationBlueprint[index].animationComponent[animIndex],
+                    factor,
+                    animationBlueprint[index].customStartPos ? animationBlueprint[index].startPos : originalTransform.position,
+                    animationBlueprint[index].customEndPos ? animationBlueprint[index].endPos : originalTransform.position
+                );
+
                 break;
             case Utilities.AnimElement.Rotation:
                 //TODO

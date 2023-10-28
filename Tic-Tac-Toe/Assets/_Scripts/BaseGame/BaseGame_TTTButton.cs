@@ -7,14 +7,12 @@ public class BaseGame_TTTButton : MonoBehaviour
 {
     public int x, y;
 
-    public Sprite[] Xstyles;
-    public Sprite[] Ostyles;
-
     int currentStyle = 0;
+    [SerializeField] private SymbolSwitch symbolSwitch;
 
-    public AnimationScriptController anim;
+    [SerializeField] private AnimationScriptController anim;
 
-    void Awake ()
+    void OnEnable ()
     {
         /*
         //Doublechecking that the button indicies are assigned
@@ -51,17 +49,18 @@ public class BaseGame_TTTButton : MonoBehaviour
         }*/
 
         //Set symbol style
-        int tempStyle = PlayerPrefs.GetInt("Symbol Style");
-
-        if (tempStyle != currentStyle)
+        if (PlayerPrefs.HasKey("Symbol Style"))
         {
-            currentStyle = tempStyle;
-
-            transform.GetChild(0).GetComponent<Image>().sprite = Xstyles[currentStyle];
-            transform.GetChild(1).GetComponent<Image>().sprite = Ostyles[currentStyle];
+            int symbolStyle = PlayerPrefs.GetInt("Symbol Style");
+            if (symbolStyle != currentStyle)
+            {
+                transform.GetChild(0).GetComponent<Image>().sprite = symbolSwitch.symbolPair[symbolStyle].symbol[0];
+                transform.GetChild(1).GetComponent<Image>().sprite = symbolSwitch.symbolPair[symbolStyle].symbol[1];
+                currentStyle = symbolStyle;
+            }
         }
 
-        if (anim == null)
+        if (!anim)
         {
             anim = gameObject.GetComponent<AnimationScriptController>();
         }

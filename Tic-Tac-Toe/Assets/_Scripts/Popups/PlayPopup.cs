@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayPopup : MonoBehaviour
 {
+    [SerializeField] private MainMenu mainMenu;
+
+    void Awake()
+    {
+        if (!mainMenu)
+            mainMenu = GameObject.Find("/MainMenu").GetComponent<MainMenu>();
+    }
 
     public void SetSymbolStyle(int style)
     {
@@ -14,6 +20,6 @@ public class PlayPopup : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("BaseGame");
+        mainMenu.CloseMainMenu();
     }
 }
