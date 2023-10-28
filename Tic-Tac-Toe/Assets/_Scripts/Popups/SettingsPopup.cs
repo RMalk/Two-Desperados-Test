@@ -50,8 +50,7 @@ public class SettingsPopup : MonoBehaviour
             SliderChange(toggle, i);
 
         SetMasterVolume(toggle ? masterSlider.value : masterSlider.minValue);
-        if (toggle)
-            ButtonPress();
+        ButtonPress();
     }
 
     void ToggleChange(bool toggle)
@@ -68,8 +67,7 @@ public class SettingsPopup : MonoBehaviour
         soundSlider.enabled = toggle;
         SliderChange(toggle, 1);
         SetSoundVolume(toggle ? soundSlider.value : soundSlider.minValue);
-        if (toggle)
-            ButtonPress();
+        ButtonPress();
     }
 
     public void ToggleMusic(bool toggle)
@@ -82,7 +80,8 @@ public class SettingsPopup : MonoBehaviour
 
     public void ButtonPress()
     {
-        audioManager.PlaySounds(Utilities.SoundType.Click);
+        if (gameObject.activeSelf)
+            audioManager.PlaySounds(Utilities.SoundType.Click);
     }
 
     void SliderChange(bool toggle, int slider)
@@ -96,18 +95,21 @@ public class SettingsPopup : MonoBehaviour
                 index = toggle ? 0 : 1;
                 masterSlider.transform.GetChild(0).GetComponent<Image>().color = sliderColors[index];
                 masterSlider.transform.GetChild(1).GetChild(0).GetComponent<Image>().color = sliderColors[index];
+
                 break;
             case 1:
                 soundSlider.enabled = toggle && soundToggle.isOn;
                 index = (soundToggle.isOn && toggle) ? 0 : 1;
                 soundSlider.transform.GetChild(0).GetComponent<Image>().color = sliderColors[index];
                 soundSlider.transform.GetChild(1).GetChild(0).GetComponent<Image>().color = sliderColors[index];
+
                 break;
             case 2:
                 musicSlider.enabled = toggle && musicToggle.isOn;
                 index = (musicToggle.isOn && toggle) ? 0 : 1;
                 musicSlider.transform.GetChild(0).GetComponent<Image>().color = sliderColors[index];
                 musicSlider.transform.GetChild(1).GetChild(0).GetComponent<Image>().color = sliderColors[index];
+
                 break;
             default:
                 Debug.Log("Panic, the world is a lie!");

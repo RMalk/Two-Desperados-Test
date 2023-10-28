@@ -3,7 +3,7 @@ using System.IO;
 
 public static class Utilities
 {
-    public enum SoundType { Click, Swipe, Nope };
+    public enum SoundType { Click, Swipe, Nope, Draw };
 
     public enum AnimElement 
     {

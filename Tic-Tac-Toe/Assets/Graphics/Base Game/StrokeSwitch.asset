@@ -23,5 +23,5 @@ MonoBehaviour:
     strokeImage: {fileID: 21300000, guid: cf1d8e084ec93964c81bd4d9b998f273, type: 3}
   - color:
     - {r: 0.07450981, g: 0.49411768, b: 0.2392157, a: 0.95686275}
-    - {r: 0.3529412, g: 0.22352943, b: 0.38431376, a: 0.9647059}
+    - {r: 0.21563713, g: 0.15445887, b: 0.3679245, a: 0.9647059}
     strokeImage: {fileID: 21300000, guid: bac5d65e16c79d74883a2fb87425b3b5, type: 3}

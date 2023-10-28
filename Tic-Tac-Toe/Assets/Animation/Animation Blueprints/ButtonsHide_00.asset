@@ -64,6 +64,6 @@ MonoBehaviour:
     y: 1
     z: 0
   customStartPos: 0
-  startPos: {x: 0, y: 0, z: 0}
+  startPos: {x: 0, y: -1920, z: 0}
   customEndPos: 1
   endPos: {x: 0, y: -1920, z: 0}

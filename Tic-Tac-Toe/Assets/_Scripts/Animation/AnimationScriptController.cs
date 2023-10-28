@@ -212,6 +212,17 @@ public class AnimationScriptController : MonoBehaviour
                 ), GetComponent<RectTransform>().sizeDelta.y);
 
                 break;
+            case Utilities.AnimElement.Height:
+
+                GetComponent<RectTransform>().sizeDelta = new Vector2( GetComponent<RectTransform>().sizeDelta.y,
+                AnimateHeight.Animate
+                (
+                    animationBlueprint[index].animationComponent[animIndex],
+                    factor,
+                    originalTransform.height
+                ));
+
+                break;
             default:
                 Debug.LogError("Animation element out of range at object " + gameObject.name);
                 break;

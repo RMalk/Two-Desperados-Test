@@ -61,7 +61,7 @@ public class BaseGame_GameBoard : MonoBehaviour
     {
         yield return new WaitForSeconds(delay * index);
         strokes[index].gameObject.SetActive(true);
-        audioManager.PlaySounds(Utilities.SoundType.Swipe);
+        audioManager.PlaySounds(Utilities.SoundType.Draw);
 
         yield return new WaitForSeconds(strokes[index].animationBlueprint[0].duration);
         StopCoroutine(animCoroutines[index]);

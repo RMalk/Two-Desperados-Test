@@ -44,30 +44,38 @@ public class AudioManager : MonoBehaviour
                 GameObject soundGroup = new GameObject(names[i] + (soundTypeCount[i] > 1 ? "s" : ""));
                 soundGroup.transform.parent = transform;
             }
+            else if (soundTypeCount[i] == 0)
+            {
+                GameObject soundGroup = new GameObject("null " + names[i]);
+                soundGroup.transform.parent = transform;
+            }
         }
 
     }
 
     public void PlaySounds(Utilities.SoundType soundType)
     {
-        int soundCount = transform.GetChild((int)soundType).childCount;
-        int randomSound = 0;
-        if (soundCount != 1)
+        if (transform.GetChild((int)soundType).childCount > 0)
         {
-            randomSound = UnityEngine.Random.Range(0, soundCount - 1);
-        }
-
-        soundCount = 0;
-        for (int i = 0; i < sounds.Length; i++)
-        {
-            if (sounds[i].soundType == soundType)
+            int soundCount = transform.GetChild((int)soundType).childCount;
+            int randomSound = 0;
+            if (soundCount > 1)
             {
-                if (soundCount == randomSound)
+                randomSound = UnityEngine.Random.Range(0, soundCount - 1);
+            }
+
+            soundCount = 0;
+            for (int i = 0; i < sounds.Length; i++)
+            {
+                if (sounds[i].soundType == soundType)
                 {
-                    float randomPitch = UnityEngine.Random.Range(sounds[i].pitchMin, sounds[i].pitchMax);
-                    sounds[i].source.pitch = randomPitch;
-                    sounds[i].source.Play();
-                    break;
+                    if (soundCount == randomSound)
+                    {
+                        float randomPitch = UnityEngine.Random.Range(sounds[i].pitchMin, sounds[i].pitchMax);
+                        sounds[i].source.pitch = randomPitch;
+                        sounds[i].source.Play();
+                        break;
+                    }
                 }
             }
         }

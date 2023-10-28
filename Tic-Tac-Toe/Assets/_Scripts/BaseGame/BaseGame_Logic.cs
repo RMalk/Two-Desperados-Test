@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class BaseGame_Logic : MonoBehaviour
@@ -9,7 +10,8 @@ public class BaseGame_Logic : MonoBehaviour
     //TODO
     int gridSize = 3;
 
-    [SerializeField] private TMP_Text playerNumberText;
+    [SerializeField] private SymbolSwitch symbolSwitch;
+    [SerializeField] private Image playerNumberText;
     [SerializeField] private TMP_Text timerText;
 
     //Player 1 is false, Player 2 is true
@@ -60,7 +62,7 @@ public class BaseGame_Logic : MonoBehaviour
 
             if (!clicked[x, y])
             {
-                audioManager.PlaySounds(Utilities.SoundType.Click);
+                audioManager.PlaySounds(Utilities.SoundType.Draw);
                 int playerNumber = Convert.ToInt32(player);
 
                 clickedButton.transform.GetChild(playerNumber).gameObject.SetActive(true);
@@ -73,7 +75,9 @@ public class BaseGame_Logic : MonoBehaviour
                     player = !player;
                     //Player text update
                     playerNumber = Convert.ToInt32(player);
-                    playerNumberText.text = Utilities.PlayerIndex(playerNumber);
+                    playerNumberText.sprite = symbolSwitch.symbolPair[PlayerPrefs.GetInt("Symbol Style")].symbol[playerNumber];
+
+                    clickedButton.AnimateButton();
 
                     clicked[x, y] = true;
                 }
@@ -163,7 +167,12 @@ public class BaseGame_Logic : MonoBehaviour
         gamePaused = true;
 
         for (int i = 0; i < 4; i++)
+        {
             strikeoutLines.GetChild(i).gameObject.SetActive(strikeout[i]);
+            if (strikeout[i])
+                audioManager.PlaySounds(Utilities.SoundType.Draw);
+        }
+
 
         if (strikeout[0])
             strikeoutLines.GetChild(0).localPosition = new Vector3((x - 1) * 300, 0, 0);
