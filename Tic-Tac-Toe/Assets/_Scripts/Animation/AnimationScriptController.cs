@@ -23,14 +23,7 @@ public class AnimationScriptController : MonoBehaviour
         {
             if(originalTransform == null)
             {
-                if (GetComponent<RectTransform>() == null)
-                {
-                    originalTransform = new AnimationTransform(transform);
-                }
-                else
-                {
-                    originalTransform = new AnimationTransform(GetComponent<RectTransform>());
-                }
+                OriginalTransform();
             }
 
             Init();
@@ -39,6 +32,23 @@ public class AnimationScriptController : MonoBehaviour
 
             init = true;
         }
+    }
+
+    public void OriginalTransform()
+    {
+        if (GetComponent<RectTransform>() == null)
+        {
+            originalTransform = new AnimationTransform(transform);
+        }
+        else
+        {
+            originalTransform = new AnimationTransform(GetComponent<RectTransform>());
+        }
+    }
+
+    public void OriginalTransform(RectTransform newRect)
+    {
+        originalTransform = new AnimationTransform(newRect);
     }
 
     void Init()

@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9fdf805d6a5ce45b3017f11f4190fc, type: 3}
+  m_Name: SceneShow_01
+  m_EditorClassIdentifier: 
+  duration: 0.5
+  startDelay: 0
+  loop: 0
+  playOnEnable: 1
+  animationComponent:
+  - animElement: 2
+    animCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 3.0145836
+        inSlope: -0.13389412
+        outSlope: -0.13389412
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.26824394
+      - serializedVersion: 3
+        time: 0.50840455
+        value: 1.6179041
+        inSlope: -3.9366531
+        outSlope: -3.9366531
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.09784931
+      - serializedVersion: 3
+        time: 1
+        value: 1.0026329
+        inSlope: 0.74612486
+        outSlope: 0.74612486
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.1883781
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    x: 1
+    y: 1
+    z: 0
+  customStartPos: 0
+  startPos: {x: 1920, y: 0, z: 0}
+  customEndPos: 1
+  endPos: {x: -1920, y: 0, z: 0}

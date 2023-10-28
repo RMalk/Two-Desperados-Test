@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c9fdf805d6a5ce45b3017f11f4190fc, type: 3}
+  m_Name: SceneHide_01
+  m_EditorClassIdentifier: 
+  duration: 0.3
+  startDelay: 0
+  loop: 0
+  playOnEnable: 0
+  animationComponent:
+  - animElement: 2
+    animCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1.001795
+        inSlope: 0.13319704
+        outSlope: 0.13319704
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.3032021
+      - serializedVersion: 3
+        time: 0.5212238
+        value: 2.4909391
+        inSlope: 6.2398705
+        outSlope: 6.2398705
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.17229997
+      - serializedVersion: 3
+        time: 1
+        value: 4.865137
+        inSlope: 0.8097712
+        outSlope: 0.8097712
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.7696281
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    x: 1
+    y: 1
+    z: 0
+  customStartPos: 0
+  startPos: {x: 0, y: 0, z: 0}
+  customEndPos: 1
+  endPos: {x: -1920, y: 0, z: 0}

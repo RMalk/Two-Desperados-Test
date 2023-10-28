@@ -10,11 +10,31 @@ public class OrientationManager : MonoBehaviour
     [SerializeField] private RectTransform[] originalRectTransforms;
     [SerializeField] private Transform[] rectTransformReferences;
 
-    public void ChangeOrientation (bool Portrait)
-    {
-        int child = Portrait ? 1 : 0;
+    bool portrait = true;
 
-        if(originalTransforms.Length > 0)
+    void Update()
+    {
+        if (Screen.height >= Screen.width)
+        {
+            if (!portrait)
+                ChangeOrientation();
+
+            portrait = true;
+        }
+        else
+        {
+            if (portrait)
+                ChangeOrientation();
+
+            portrait = false;
+        }
+    }
+
+    public void ChangeOrientation ()
+    {
+        int child = portrait ? 1 : 0;
+
+        if (originalTransforms.Length > 0)
         {
             for (int i = 0; i < originalTransforms.Length; i++)
             {
@@ -28,12 +48,15 @@ public class OrientationManager : MonoBehaviour
         {
             for (int i = 0; i < originalRectTransforms.Length; i++)
             {
+                if (originalRectTransforms[i].GetComponent<AnimationScriptController>())
+                {
+                    originalRectTransforms[i].GetComponent<AnimationScriptController>().OriginalTransform(rectTransformReferences[i].GetComponent<RectTransform>());
+                }
                 originalRectTransforms[i].anchorMin = rectTransformReferences[i].GetChild(child).gameObject.GetComponent<RectTransform>().anchorMin;
                 originalRectTransforms[i].anchorMax = rectTransformReferences[i].GetChild(child).gameObject.GetComponent<RectTransform>().anchorMax;
                 originalRectTransforms[i].anchoredPosition = rectTransformReferences[i].GetChild(child).gameObject.GetComponent<RectTransform>().anchoredPosition;
                 originalRectTransforms[i].sizeDelta = rectTransformReferences[i].GetChild(child).gameObject.GetComponent<RectTransform>().sizeDelta;
             }
         }
-
     }
 }
