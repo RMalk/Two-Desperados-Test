@@ -173,7 +173,6 @@ public class BaseGame_Logic : MonoBehaviour
                 audioManager.PlaySounds(Utilities.SoundType.Draw);
         }
 
-
         if (strikeout[0])
             strikeoutLines.GetChild(0).localPosition = new Vector3((x - 1) * 300, 0, 0);
 
@@ -186,16 +185,12 @@ public class BaseGame_Logic : MonoBehaviour
 
     IEnumerator WinAnimation()
     {
-        yield return new WaitForSeconds(clicks == (gridSize * gridSize) ? 0.1f : 1.0f);
+        int winState = (clicks == (gridSize * gridSize)) ? 2 : Convert.ToInt32(player);
+
+        yield return new WaitForSeconds(winState == 2 ? 0.1f : 1.0f);
+
         endgamePopup.gameObject.SetActive(true);
-
-        int winState = Convert.ToInt32(player);
-        if (clicks == gridSize * gridSize)
-        {
-            winState = 2;
-        }
         endgamePopup.WinState(winState);
-
         gameStatistics.UpdateWins(winState, timer);
     }
 
